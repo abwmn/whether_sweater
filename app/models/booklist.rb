@@ -1,4 +1,4 @@
-class Book
+class Booklist
   def initialize(data)
     @data = data
   end
@@ -20,6 +20,6 @@ class Book
   end
 
   def books
-    
+
   end
 end
