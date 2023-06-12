@@ -1,4 +1,4 @@
-class ForecastSerializer
+class BookSerializer
   include JSONAPI::Serializer
 
   set_id :id
