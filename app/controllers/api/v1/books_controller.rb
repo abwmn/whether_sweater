@@ -1,6 +1,7 @@
 class Api::V1::BooksController < ApplicationController
-  def search(params)
+  def search
     forecast = ForecastRetriever.new(params[:location]).call
-    qty = params[:qty]
+    books = BookRetriever.new(params).get_books
+    render json: BookSerializer.new(books)
   end
 end
