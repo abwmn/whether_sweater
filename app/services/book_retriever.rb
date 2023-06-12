@@ -8,7 +8,7 @@ class BookRetriever
   end
 
   private
-  
+
   def get_books
     response = Faraday.get('https://openlibrary.org/search.json') do |req|
       req.params['title'] = @params[:location]
