@@ -1,6 +1,6 @@
 class BookRetriever
-  def initialize(params)
-    @location = params[:location]
+  def initialize(location)
+    @location = location
   end
 
   def get_books
