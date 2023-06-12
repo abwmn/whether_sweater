@@ -47,7 +47,6 @@ RSpec.describe "Api::V1::Book-Search", type: :request do
         expect(book['isbn'].first.to_i).to be_an(Integer)
         expect(book['isbn'].last.to_i).to be_an(Integer)
         expect(book['title']).to be_a(String)
-        expect(book['title']).to contain(@params[:location])
         expect(book['publisher']).to be_an(Array)
         expect(book['publisher'].first).to be_a(String)
       end

@@ -1,12 +1,11 @@
 class BookRetriever
   def initialize(params)
-    @params = params
+    @location = params[:location]
   end
 
   def get_books
     response = Faraday.get('https://openlibrary.org/search.json') do |req|
-      req.params['title'] = @params[:location]
-      req.params['quantity'] = @params[:quantity]
+      req.params['title'] = @location
     end
     JSON.parse(response.body, symbolize_names: true)
   end

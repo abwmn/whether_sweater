@@ -1,7 +1,8 @@
 class Booklist
-  def initialize(forecast, books)
+  def initialize(forecast, books, quantity)
     @forecast = forecast
     @books = books
+    @quantity = quantity.to_i
   end
 
   def id
@@ -21,8 +22,7 @@ class Booklist
   end
 
   def books
-    @books[:docs].map do |book|
-      # require 'pry'; binding.pry
+    @books[:docs].first(@quantity).map do |book|
       {
         "isbn" => book[:isbn],
         "title" => book[:title],
