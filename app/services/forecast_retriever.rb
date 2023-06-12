@@ -9,10 +9,6 @@ class ForecastRetriever
     Forecast.new(forecast)
   end
 
-  def id
-    nil
-  end
-
   private
 
   def get_coordinates

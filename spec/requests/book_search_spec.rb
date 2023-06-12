@@ -30,7 +30,6 @@ RSpec.describe "Api::V1::Book-Search", type: :request do
     end
 
     it "returns book search attributes" do
-      require 'pry'; binding.pry
       expect(@attributes).to have_key('total_books_found')
       expect(@attributes['total_books_found']).to be_an(Integer)
 

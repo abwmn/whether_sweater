@@ -17,10 +17,17 @@ class Booklist
   end
 
   def total_books_found
-
+    @books[:numFound]
   end
 
   def books
-
+    @books[:docs].map do |book|
+      # require 'pry'; binding.pry
+      {
+        "isbn" => book[:isbn],
+        "title" => book[:title],
+        "publisher" => book[:publisher]
+      }
+    end
   end
 end
