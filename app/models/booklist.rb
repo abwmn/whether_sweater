@@ -9,14 +9,11 @@ class Booklist
   end
 
   def destination
-    forecast.location[:name]
+    @forecast['destination']
   end
 
   def forecast
-    {
-      summary: books[:current][:condition][:text],
-      temperature: "#{books[:current][:temp_f]} F"
-    }
+    @forecast['forecast']
   end
 
   def total_books_found
