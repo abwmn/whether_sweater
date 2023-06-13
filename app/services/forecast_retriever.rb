@@ -9,8 +9,15 @@ class ForecastRetriever
     Forecast.new(forecast)
   end
 
-  def id
-    nil
+  def condensed_forecast
+    forecast = call.data
+    {
+      'destination' => @location,
+      'forecast' => {
+        'summary' => forecast[:current][:condition][:text],
+        'temperature' => "#{forecast[:current][:temp_f]} F"
+      }
+    }
   end
 
   private
