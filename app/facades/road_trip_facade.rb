@@ -4,7 +4,7 @@ class RoadTripFacade
     @destination = params[:destination]
     @travel_times = MapService.get_travel_time(params)
     if @travel_times
-      @forecast = ForecastFacade.get_forecast(@destination)
+      @forecast = ForecastFacade.get_forecast(@destination, @travel_times[:seconds])
       @eta_forecast = calculate_eta_forecast
     end
   end

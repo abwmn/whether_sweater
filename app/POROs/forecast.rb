@@ -24,7 +24,7 @@ class Forecast
   end
 
   def daily_weather
-    data[:forecast][:forecastday].first(5).map do |daily|
+    data[:forecast][:forecastday].map do |daily|
       {
         date: daily[:date],
         sunrise: daily[:astro][:sunrise],
