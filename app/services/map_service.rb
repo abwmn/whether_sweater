@@ -14,11 +14,8 @@ class MapService
     end
     body = JSON.parse(response.body, symbolize_names: true)
 
-    if body[:info][:statuscode] == 402
-      return nil
-    else
-      return [body[:route][:time], body[:route][:formattedTime]]
-    end
+    body[:info][:statuscode] == 402 ? nil :
+    {seconds: body[:route][:time], formatted: body[:route][:formattedTime]}
   end
 
   private
