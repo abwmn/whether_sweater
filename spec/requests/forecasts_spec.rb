@@ -29,6 +29,7 @@ RSpec.describe "Api::V0::Forecasts", type: :request, vcr: true do
     it  "Checks daily_weather attributes" do
       expect(@attributes).to have_key('daily_weather')
       daily_weather = @attributes['daily_weather']
+      expect(daily_weather.count).to eq(5)
 
       daily_weather.each do |day|
         expect(day.keys).to contain_exactly('date', 'sunrise', 'sunset', 'max_temp', 'min_temp', 'condition', 'icon')
@@ -38,6 +39,7 @@ RSpec.describe "Api::V0::Forecasts", type: :request, vcr: true do
     it  "Checks hourly_weather attributes" do
       expect(@attributes).to have_key('hourly_weather')
       hourly_weather = @attributes['hourly_weather']
+      expect(hourly_weather.count).to eq(24)
 
       hourly_weather.each do |hour|
         expect(hour.keys).to contain_exactly('time', 'temperature', 'conditions', 'icon')

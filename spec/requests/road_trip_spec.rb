@@ -4,8 +4,7 @@ RSpec.describe "Api::V0::RoadTrips", type: :request, vcr: true do
   before do
     @origin = 'Cincinatti,OH'
     @destination1 = 'Chicago,IL'
-    @destination2 = 'Panama City, Panama'
-    @destination3 = 'London,UK'
+    @destination2 = 'London,UK'
   end
 
   describe "POST /create" do
@@ -31,7 +30,7 @@ RSpec.describe "Api::V0::RoadTrips", type: :request, vcr: true do
     let(:impossible_route) do
       {
         origin: @origin,
-        destination: @destination3,
+        destination: @destination2,
         api_key: user.api_key
       }
     end
@@ -58,14 +57,14 @@ RSpec.describe "Api::V0::RoadTrips", type: :request, vcr: true do
       
         expect(attributes['start_city']).to eq(@origin)
         expect(attributes['end_city']).to eq(@destination1)
-        expect(attributes['travel_time']).to eq("04:25:35")
+        expect(attributes['travel_time']).to eq("04:20:37")
       
         weather_at_eta = attributes['weather_at_eta']
         expect(weather_at_eta).to be_a(Hash)
       
-        expect(weather_at_eta['datetime']).to eq("2023-06-14 07:00")
-        expect(weather_at_eta['temperature']).to eq(57.4)
-        expect(weather_at_eta['condition']).to eq("Patchy rain possible")
+        expect(weather_at_eta['datetime']).to eq("2023-06-14 13:00")
+        expect(weather_at_eta['temperature']).to eq(64.9)
+        expect(weather_at_eta['condition']).to eq("Partly cloudy")
       end
       
     end
