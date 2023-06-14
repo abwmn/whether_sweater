@@ -62,9 +62,9 @@ RSpec.describe "Api::V0::RoadTrips", type: :request, vcr: true do
         weather_at_eta = attributes['weather_at_eta']
         expect(weather_at_eta).to be_a(Hash)
       
-        expect(weather_at_eta['datetime']).to eq("2023-06-14 14:00")
-        expect(weather_at_eta['temperature']).to eq(66.4)
-        expect(weather_at_eta['condition']).to eq("Partly cloudy")
+        expect(weather_at_eta['datetime']).to eq("2023-06-14 15:00")
+        expect(weather_at_eta['temperature']).to eq(67.3)
+        expect(weather_at_eta['condition']).to eq("Sunny")
       end
       
     end
