@@ -1,11 +1,7 @@
-class BookRetriever
-  def initialize(location)
-    @location = location
-  end
-
-  def get_books
+class BookService
+  def self.get_books(location)
     response = Faraday.get('https://openlibrary.org/search.json') do |req|
-      req.params['title'] = @location
+      req.params['title'] = location
     end
     JSON.parse(response.body, symbolize_names: true)
   end

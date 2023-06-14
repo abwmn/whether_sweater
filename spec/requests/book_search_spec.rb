@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Api::V1::Book-Search", type: :request do
+RSpec.describe "Api::V1::Book-Search", type: :request, vcr: true do
   describe "GET /api/v1/book-search" do
 
     before do
