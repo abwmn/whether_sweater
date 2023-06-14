@@ -3,10 +3,7 @@ class RoadTripFacade
     @origin = params[:origin]
     @destination = params[:destination]
     @travel_times = MapService.get_travel_time(params)
-    if @travel_times
-      @eta = calculate_eta
-      @eta_forecast = calculate_eta_forecast
-    end
+    @eta_forecast = eta_forecast if @travel_times
   end
 
   def plan_trip
@@ -16,17 +13,14 @@ class RoadTripFacade
 
   private
 
-  def calculate_eta
+  def eta_forecast
     local_time = WeatherService.local_time(@destination)
     eta = local_time.advance(seconds: @travel_times[:seconds])
-  end
-
-  def calculate_eta_forecast
-    forecast = ForecastFacade.get_forecast(@destination, @eta)
-    hourly_forecast = forecast.data[:forecast][:forecastday].first[:hour][@eta.hour]
+    forecast = ForecastFacade.get_forecast(@destination, eta)
+    hourly_forecast = forecast.data[:forecast][:forecastday].first[:hour][eta.hour]
     define_eta_forecast(hourly_forecast)
   end
-  
+
   def define_eta_forecast(hourly_forecast)
     {
       datetime: hourly_forecast[:time],
